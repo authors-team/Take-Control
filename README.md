@@ -1,10 +1,5 @@
-# after-effects-stuff
-Open source after effects stuff
+# Take Control
 
-Scripts
-=========
-
-## On/Off Control
 [*View Code*](/scripts/OnOffControl.jsx) | [*Download/Usage*](http://authorsprojects.com)
 
 This script creates a control layer with checkboxes to control the selected properties/layers

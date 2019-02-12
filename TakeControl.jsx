@@ -1,6 +1,6 @@
 {
-	// OnOffControl.jsx
-	// Name: OnOff Control
+	// TakeControl.jsx
+	// Name: Take Control
 	// Version: 1.0
 	// Created with love by AUTHORS (http://authorsprojects.com)
 	// Author: Chris Zachary
@@ -26,8 +26,8 @@
 
 	//
 
-	function OnOffControl(thisObj) {
-		var scriptName = "On/Off Control";
+	function TakeControl(thisObj) {
+		var scriptName = "Take Control";
 		var controlLayerName = "_CONTROL";
 
 		//
@@ -86,12 +86,29 @@
 								var checkbox = controlLayer.Effects.addProperty(
 									"ADBE Checkbox Control"
 								);
-								checkbox.name =
-									curLayer.name + " - " + prop.name + " - Control";
+								checkbox.name = curLayer.name + " - " + prop.name;
 								checkbox.property("Checkbox").setValue(1);
 
 								// set expression
 								prop.expression =
+									'thisComp.layer("' +
+									controlLayer.name +
+									'").effect("' +
+									checkbox.name +
+									'")("Checkbox")*value';
+								propsCount++;
+							} else if (prop.isEffect == true) {
+								// Create checkbox
+								var checkbox = controlLayer.Effects.addProperty(
+									"ADBE Checkbox Control"
+								);
+								checkbox.name = curLayer.name + " - " + prop.name;
+								checkbox.property("Checkbox").setValue(1);
+
+								// set expression on Compositing options
+								prop
+									.property("Compositing Options")
+									.property("Effect Opacity").expression =
 									'thisComp.layer("' +
 									controlLayer.name +
 									'").effect("' +
@@ -108,7 +125,7 @@
 							var checkbox = controlLayer.Effects.addProperty(
 								"ADBE Checkbox Control"
 							);
-							checkbox.name = curLayer.name + " - Control";
+							checkbox.name = curLayer.name;
 							checkbox.property("Checkbox").setValue(1);
 
 							// set expression
@@ -187,7 +204,7 @@
 		// The main script.
 		//
 		if (parseFloat(app.version) < 8) {
-			alert("This script requires After Effects CS3 or later.", scriptName);
+			alert("This script requires After Effects CS6 or later.", scriptName);
 			return;
 		}
 
@@ -205,5 +222,5 @@
 		}
 	}
 
-	OnOffControl(this);
+	TakeControl(this);
 }

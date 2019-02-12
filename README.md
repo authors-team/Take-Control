@@ -1,6 +1,6 @@
 # Take Control
 
-[_View Code_](/scripts/OnOffControl.jsx) | [_Download/Usage_](http://authorsprojects.com)
+[_View Code_](/TakeControl.jsx) | [_Download/Usage_](http://authorsprojects.com)
 
 This script creates a control layer with checkboxes to control the selected properties/layers
 If a control layer with the provided layer already exists, it adds the control to the existing control layer.
